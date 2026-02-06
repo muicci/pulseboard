@@ -1,1 +1,15 @@
 .env
+.env.local
+.env.production
+__pycache__/
+*.pyc
+node_modules/
+.venv/
+*.egg-info/
+dist/
+build/
+.DS_Store
+*.log
+.notion_parent
+docs/n8n-credentials.json
+docs/n8n-postgres-credential.json

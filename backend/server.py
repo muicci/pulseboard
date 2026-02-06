@@ -9,7 +9,7 @@ import asyncio
 app = FastAPI()
 
 # Database connection details
-DATABASE_URL = os.environ.get("DATABASE_URL", "postgresql://postgres:password123@localhost:5433/agents_db")
+DATABASE_URL = os.environ.get("DATABASE_URL", "")
 
 # Pydantic models for data validation
 class Signal(BaseModel):

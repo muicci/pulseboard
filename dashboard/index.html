@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PulseBoard - AI Command Center</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="https://via.placeholder.com/40" alt="PulseBoard Logo">
+                <h1>PulseBoard</h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#" class="active">Dashboard</a></li>
+                    <li><a href="#">Signals</a></li>
+                    <li><a href="#">Calendar</a></li>
+                    <li><a href="#">Email</a></li>
+                    <li><a href="#">Settings</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="dashboard-header">
+                <h2>Welcome, Agent!</h2>
+                <div class="user-profile">
+                    <span>Jane Doe</span>
+                    <img src="https://via.placeholder.com/30" alt="User Avatar">
+                </div>
+            </header>
+
+            <div class="stats-bar glassmorphic-card">
+                <div class="stat-item">
+                    <h3>Total Signals</h3>
+                    <p id="stat-signals">...</p>
+                </div>
+                <div class="stat-item">
+                    <h3>Pending Actions</h3>
+                    <p id="stat-actions">...</p>
+                </div>
+                <div class="stat-item">
+                    <h3>Upcoming Events</h3>
+                    <p id="stat-events">...</p>
+                </div>
+                <div class="stat-item">
+                    <h3>Emails Processed</h3>
+                    <p id="stat-emails">...</p>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <section class="signal-feed glassmorphic-card">
+                    <h3>⚡ Signal Feed</h3>
+                    <div id="signal-feed-content">
+                        <p class="loading-message">Loading signals...</p>
+                    </div>
+                </section>
+
+                <section class="calendar glassmorphic-card">
+                    <h3>📅 Calendar</h3>
+                    <div id="calendar-content">
+                        <p class="loading-message">Loading events...</p>
+                    </div>
+                </section>
+
+                <section class="email-digest glassmorphic-card">
+                    <h3>📧 Email Digest</h3>
+                    <div id="email-digest-content">
+                        <p class="loading-message">Loading email digest...</p>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

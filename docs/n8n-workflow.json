@@ -1,0 +1,107 @@
+{
+  "name": "PulseBoard Message Handler",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "pulseboard-webhook",
+        "options": {}
+      },
+      "id": "76657997-7422-4416-896c-8597089100d0",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        250,
+        300
+      ],
+      "webhookId": "pulseboard-webhook"
+    },
+    {
+      "parameters": {
+        "operation": "insert",
+        "table": "pulseboard_signals",
+        "options": {},
+        "schema": "public",
+        "columns": [
+          {
+            "column": "type",
+            "value": "={{ $json.type }}"
+          },
+          {
+            "column": "source",
+            "value": "={{ $json.source }}"
+          },
+          {
+            "column": "data",
+            "value": "={{ $json.data }}"
+          }
+        ]
+      },
+      "id": "e30e9d6d-965a-464a-a035-779890630773",
+      "name": "PostgreSQL",
+      "type": "n8n-nodes-base.postgreSql",
+      "typeVersion": 1,
+      "position": [
+        500,
+        300
+      ],
+      "credentials": {
+        "postgreSql": {
+          "id": "pulseboard-postgres",
+          "name": "Local Postgres"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "1490085077",
+        "text": "New PulseBoard Signal: {{ $json.type }} from {{ $json.source }}",
+        "options": {}
+      },
+      "id": "100e4708-3e4b-4c22-b5e0-7987089100d2",
+      "name": "Telegram",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [
+        750,
+        300
+      ],
+      "credentials": {
+        "telegramApi": {
+          "id": "pulseboard-telegram",
+          "name": "muiccibot"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "PostgreSQL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PostgreSQL": {
+      "main": [
+        [
+          {
+            "node": "Telegram",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {},
+  "staticData": null,
+  "meta": null,
+  "pinData": {}
+}
